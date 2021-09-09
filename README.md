@@ -99,7 +99,7 @@ Submitting Your Code For Evaluation
 When you are finished and ready to submit your work, use the following command to generate a series of patch files with
 all of your changes:
 
-    git format-patch origin/master
+    git format-patch origin/main
 
 This will create one or more numbered patch files.
 
