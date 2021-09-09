@@ -1,4 +1,4 @@
-Eco-mind Prospective Hire Test - Java Edition
+Eco-Mind Prospective Hire Test - Java Edition
 =================================================
 
 
@@ -23,7 +23,7 @@ following URLs and HTTP verbs:
 * delete the existing department identified by *id*
 
 The service MUST accept and return resources in JSON format. Design the JSON schema you feel is appropriate given the
-existing data structure, you can use the openapi file at src/main/resources/openapi/integrationApi.yaml
+existing data structure, you can use the OpenAPI file at src/main/resources/openapi/integrationApi.yaml
 
 Add any necessary unit and/or integration tests.
 
@@ -103,6 +103,6 @@ all of your changes:
 
 This will create one or more numbered patch files.
 
-Send an email with the patch files attached to the person who sent you this test. If you have git set up to send email,
+Send an email to techevaluation@eco-mind.eu with the patch files attached to the person who sent you this test. If you have git set up to send email,
 you may also use the `git send-email` command to do this.
 
