@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>eu.ecomind</groupId>
 	<artifactId>interview</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>interview</name>
 	<description>Interview project</description>
 
