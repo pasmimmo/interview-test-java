@@ -8,7 +8,7 @@ public class EmployeeEntity implements Serializable {
     private String firstName;
     private String lastName;
     private double salary;
-    private String departmentId;
+    private Integer departmentId;
 
     public String getId() {
         return id;
@@ -42,11 +42,11 @@ public class EmployeeEntity implements Serializable {
         this.salary = salary;
     }
 
-    public String getDepartmentId() {
+    public Integer getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(String departmentId) {
+    public void setDepartmentId(Integer departmentId) {
         this.departmentId = departmentId;
     }
 }
