@@ -1,6 +1,6 @@
 package eu.ecomind.interview.web.controller;
 
-import eu.ecomind.gshub.interview.web.model.DepartmentRead;
+import eu.ecomind.interview.web.model.DepartmentRead;
 import eu.ecomind.interview.domain.services.DepartmentService;
 import eu.ecomind.interview.web.controller.utils.ConverterUtils;
 import org.springframework.beans.factory.annotation.Autowired;

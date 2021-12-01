@@ -4,17 +4,17 @@ import java.io.Serializable;
 
 public class EmployeeEntity implements Serializable {
 
-    private String id;
+    private Integer id;
     private String firstName;
     private String lastName;
     private double salary;
     private Integer departmentId;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
