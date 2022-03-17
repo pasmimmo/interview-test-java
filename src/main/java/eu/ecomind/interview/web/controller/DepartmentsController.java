@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestController
@@ -41,12 +42,39 @@ public class DepartmentsController {
         }
     }
 
-    @PostMapping(path = "/{id}")
+    @PutMapping(path = "/{id}")
     public DepartmentRead updateDepartmentById(@PathVariable Integer id,@RequestBody DepartmentRead postData){
+        DepartmentRead departmentRead = new DepartmentRead();
+        if(!incompleteData(postData)){
         postData.id(id);
         //Todo handle mismatch
         var departmentFromDB = getDepartmentById(id);
         BeanUtils.copyProperties(postData,departmentFromDB);
-        return createDepartment(departmentFromDB);
+        departmentRead = createDepartment(departmentFromDB);
+        }
+        return departmentRead;
+    }
+
+    @PatchMapping(path = "/{id}")
+    public DepartmentRead patchDepartmentById(@PathVariable Integer id,@RequestBody DepartmentRead postData){
+        var departmentFromDB = new DepartmentRead();
+
+        if(incompleteData(postData)) {
+            departmentFromDB = getDepartmentById(id);
+
+            if(Objects.nonNull(postData.getId()))
+                departmentFromDB.setId(postData.getId());
+            if (Objects.nonNull(postData.getName()))
+                departmentFromDB.setName(postData.getName());
+            if(Objects.nonNull(postData.getAddress()))
+                departmentFromDB.setAddress(postData.getAddress());
+            departmentFromDB = createDepartment(departmentFromDB);
+        }
+
+        return departmentFromDB;
+    }
+
+    public static boolean incompleteData(DepartmentRead inputData){
+        return Objects.isNull(inputData.getId()) || Objects.isNull(inputData.getAddress()) || Objects.isNull(inputData.getName());
     }
 }
