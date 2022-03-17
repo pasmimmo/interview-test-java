@@ -1,5 +1,6 @@
 package eu.ecomind.interview.web.controller;
 
+import eu.ecomind.interview.domain.entities.DepartmentEntity;
 import eu.ecomind.interview.domain.services.DepartmentService;
 import eu.ecomind.interview.web.controller.utils.ConverterUtils;
 import eu.ecomind.interview.web.model.DepartmentRead;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @RestController
@@ -25,5 +27,16 @@ public class DepartmentsController {
     public DepartmentRead createDepartment(@RequestBody DepartmentRead postData){
         var savedEntity = departmentService.saveDepartment(ConverterUtils.webToDepartment(postData));
         return ConverterUtils.departmentToWeb(savedEntity);
+    }
+
+    @GetMapping("/{id}")
+    public DepartmentRead getDepartmentById(@PathVariable Integer id) {
+        try {
+            DepartmentEntity department = departmentService.getById(id);
+            return ConverterUtils.departmentToWeb(department);
+        } catch (NoSuchElementException e) {
+            return new DepartmentRead();
+            //Todo handle not found
+        }
     }
 }
