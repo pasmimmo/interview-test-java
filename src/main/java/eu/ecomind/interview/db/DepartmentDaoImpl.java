@@ -3,6 +3,7 @@ package eu.ecomind.interview.db;
 import eu.ecomind.interview.db.entities.DepartmentDb;
 import eu.ecomind.interview.domain.DepartmentDao;
 import eu.ecomind.interview.domain.entities.DepartmentEntity;
+import eu.ecomind.interview.web.controller.utils.ConverterUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -29,5 +30,11 @@ public class DepartmentDaoImpl implements DepartmentDao {
             BeanUtils.copyProperties(db, entity);
             return entity;
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    public DepartmentEntity createDepartment(DepartmentEntity departmentEntity){
+        var entity = repository.save(ConverterUtils.pojoToEntity(departmentEntity));
+        return ConverterUtils.entityToPojo(entity);
     }
 }

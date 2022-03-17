@@ -16,4 +16,8 @@ public class DepartmentService {
     public Collection<DepartmentEntity> listDepartments() {
         return departmentDao.list();
     }
+
+    public DepartmentEntity saveDepartment(DepartmentEntity newDepartment){
+        return departmentDao.createDepartment(newDepartment);
+    }
 }
