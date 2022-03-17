@@ -7,4 +7,5 @@ import java.util.Collection;
 public interface DepartmentDao {
     Collection<DepartmentEntity> list();
     DepartmentEntity createDepartment(DepartmentEntity departmentEntity);
+    DepartmentEntity findDepartmentById(Integer id);
 }

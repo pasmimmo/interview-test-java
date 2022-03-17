@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Repository
@@ -36,5 +37,13 @@ public class DepartmentDaoImpl implements DepartmentDao {
     public DepartmentEntity createDepartment(DepartmentEntity departmentEntity){
         var entity = repository.save(ConverterUtils.pojoToEntity(departmentEntity));
         return ConverterUtils.entityToPojo(entity);
+    }
+
+    @Override
+    public DepartmentEntity findDepartmentById(Integer id) {
+        var department = repository.findById(id);
+        if (department.isPresent())
+            return ConverterUtils.entityToPojo(department.get());
+        throw new NoSuchElementException();
     }
 }

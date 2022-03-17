@@ -20,4 +20,8 @@ public class DepartmentService {
     public DepartmentEntity saveDepartment(DepartmentEntity newDepartment){
         return departmentDao.createDepartment(newDepartment);
     }
+
+    public DepartmentEntity getById(Integer id) {
+        return departmentDao.findDepartmentById(id);
+    }
 }
