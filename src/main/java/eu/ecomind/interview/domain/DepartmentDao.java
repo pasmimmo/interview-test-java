@@ -8,4 +8,5 @@ public interface DepartmentDao {
     Collection<DepartmentEntity> list();
     DepartmentEntity createDepartment(DepartmentEntity departmentEntity);
     DepartmentEntity findDepartmentById(Integer id);
+    DepartmentEntity removeDepartment(DepartmentEntity data);
 }

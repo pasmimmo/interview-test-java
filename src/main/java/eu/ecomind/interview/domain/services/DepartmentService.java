@@ -24,4 +24,8 @@ public class DepartmentService {
     public DepartmentEntity getById(Integer id) {
         return departmentDao.findDepartmentById(id);
     }
+
+    public DepartmentEntity removeDepartment(DepartmentEntity data) {
+        return departmentDao.removeDepartment(data);
+    }
 }

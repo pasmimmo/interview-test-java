@@ -46,4 +46,14 @@ public class DepartmentDaoImpl implements DepartmentDao {
             return ConverterUtils.entityToPojo(department.get());
         throw new NoSuchElementException();
     }
+
+    @Override
+    public DepartmentEntity removeDepartment(DepartmentEntity data) {
+        var dbData=repository.findById(data.getId());
+        if (dbData.isPresent()){
+            data = ConverterUtils.entityToPojo(dbData.get());
+        }
+        repository.delete(ConverterUtils.pojoToEntity(data));
+        return data;
+    }
 }

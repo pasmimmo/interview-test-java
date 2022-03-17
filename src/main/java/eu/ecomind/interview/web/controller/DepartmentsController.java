@@ -6,6 +6,8 @@ import eu.ecomind.interview.web.controller.utils.ConverterUtils;
 import eu.ecomind.interview.web.model.DepartmentRead;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -74,7 +76,15 @@ public class DepartmentsController {
         return departmentFromDB;
     }
 
-    public static boolean incompleteData(DepartmentRead inputData){
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<DepartmentEntity> removeDepartmentById(@PathVariable Integer id){
+        var data =departmentService.getById(id);
+        data = departmentService.removeDepartment(data);
+        return new ResponseEntity<>(data, HttpStatus.ACCEPTED);
+    }
+
+
+        public static boolean incompleteData(DepartmentRead inputData){
         return Objects.isNull(inputData.getId()) || Objects.isNull(inputData.getAddress()) || Objects.isNull(inputData.getName());
     }
 }
