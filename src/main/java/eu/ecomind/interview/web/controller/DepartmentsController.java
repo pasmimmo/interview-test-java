@@ -4,6 +4,7 @@ import eu.ecomind.interview.domain.entities.DepartmentEntity;
 import eu.ecomind.interview.domain.services.DepartmentService;
 import eu.ecomind.interview.web.controller.utils.ConverterUtils;
 import eu.ecomind.interview.web.model.DepartmentRead;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,5 +39,14 @@ public class DepartmentsController {
             return new DepartmentRead();
             //Todo handle not found
         }
+    }
+
+    @PostMapping(path = "/{id}")
+    public DepartmentRead updateDepartmentById(@PathVariable Integer id,@RequestBody DepartmentRead postData){
+        postData.id(id);
+        //Todo handle mismatch
+        var departmentFromDB = getDepartmentById(id);
+        BeanUtils.copyProperties(postData,departmentFromDB);
+        return createDepartment(departmentFromDB);
     }
 }
