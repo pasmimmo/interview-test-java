@@ -66,6 +66,7 @@ public class DepartmentsController {
 
             if(Objects.nonNull(postData.getId()))
                 departmentFromDB.setId(postData.getId());
+            //Todo handle mismatch
             if (Objects.nonNull(postData.getName()))
                 departmentFromDB.setName(postData.getName());
             if(Objects.nonNull(postData.getAddress()))
